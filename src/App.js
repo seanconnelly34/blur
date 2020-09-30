@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { render } from "react-dom";
+import "semantic-ui-css/semantic.min.css";
 
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Sidebar from "./components/Sidebar";
+import "./App.css";
+import cx from "classnames";
+import Side from "./components/side";
 function App() {
+  const [toggle, setToggle] = useState(false);
+
+  const classes = cx("pusher");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+
+      <div className="ui attached pushable" style={{ height: "100vh" }}>
+        <Sidebar />
+        {/* <Side /> */}
+        <div className={classes}>
+          <Main />
+        </div>
+      </div>
     </div>
   );
 }
